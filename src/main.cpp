@@ -10,7 +10,7 @@ namespace data {
 qpl::size get_input_size() {
 	qpl::size result = qpl::size_max;
 	while (true) {
-		qpl::print("enter split size [enter to ignore] > ");
+		qpl::print("enter maximum file size [enter to ignore] > ");
 
 		auto input = qpl::get_input();
 		if (input.empty()) {
