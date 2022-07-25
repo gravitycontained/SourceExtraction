@@ -93,9 +93,11 @@ void extract_directory_recursive(const qpl::filesys::paths& paths, qpl::size max
 			}
 			else if (path.is_file()) {
 				if (path.file_size() <= max_size) {
-					qpl::filesys::copy_overwrite(path, destination_path.string() + path.get_full_name());
+					auto target = destination_path;
+					target.append(path.get_full_name());
+					target.ensure_branches_exist();
+					qpl::filesys::copy_overwrite(path, target);
 				}
-				//qpl::println("COPY ", path, " -> ", destination_path);
 			}
 		}
 	}
